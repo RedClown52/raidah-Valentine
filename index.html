@@ -1,259 +1,245 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Raidah 🌻 Valentine?</title>
-  <style>
-    :root{
-      --sun1:#ffd54a;
-      --sun2:#ffb703;
-      --leaf:#2d6a4f;
-      --bg1:#fff2b2;
-      --bg2:#f8c65d;
-      --card: rgba(255,255,255,0.82);
-      --stroke: rgba(255,255,255,0.6);
-      --shadow: rgba(0,0,0,0.18);
-      --yes1:#34d399; --yes2:#16a34a;
-      --no1:#fb7185;  --no2:#ef4444;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Raidah 🌻 Valentine?</title>
+<style>
+  :root{
+    --sun1:#ffd54a;
+    --sun2:#ffb703;
+    --leaf:#2d6a4f;
+    --ink:#1f2937;
+    --bg1:#fff2b2;
+    --bg2:#f8c65d;
+    --card: rgba(255,255,255,0.86);
+    --stroke: rgba(255,255,255,0.65);
+    --shadow: rgba(0,0,0,0.18);
+    --yes1:#34d399; --yes2:#16a34a;
+    --no1:#fb7185;  --no2:#ef4444;
+  }
 
-    *{ box-sizing:border-box; }
-    html, body { height:100%; }
-    body{
-      margin:0;
-      display:grid;
-      place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:#1f2937;
-      background:
-        radial-gradient(circle at top, rgba(255,245,194,1), rgba(248,198,93,1));
-      padding: 18px;
-      overflow:hidden;
-    }
+  *{ box-sizing:border-box; }
+  html, body{ height:auto; }
 
-    /* Sunflower backdrop pattern */
-    .sun-bg{
-      position:fixed;
-      inset:-20px;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(255,213,74,0.30), transparent 38%),
-        radial-gradient(circle at 85% 25%, rgba(255,183,3,0.22), transparent 40%),
-        radial-gradient(circle at 25% 85%, rgba(255,213,74,0.22), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(45,106,79,0.12), transparent 44%);
-      filter: blur(0px);
-      pointer-events:none;
-      z-index:0;
-    }
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color:var(--ink);
+    background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 18px;
+  }
 
-    /* subtle floating petals */
-    .petal{
-      position:fixed;
-      top:-40px;
-      left:0;
-      z-index:1;
-      pointer-events:none;
-      opacity:0.85;
-      filter: drop-shadow(0 12px 14px rgba(0,0,0,0.16));
-      transition: transform 3.8s linear, opacity 3.8s linear;
-    }
+  /* Sunflower ambiance background */
+  .sun-bg{
+    position:fixed;
+    inset:-30px;
+    pointer-events:none;
+    z-index:0;
+    background:
+      radial-gradient(circle at 12% 18%, rgba(255,213,74,0.34), transparent 42%),
+      radial-gradient(circle at 88% 22%, rgba(255,183,3,0.26), transparent 46%),
+      radial-gradient(circle at 28% 86%, rgba(255,213,74,0.20), transparent 48%),
+      radial-gradient(circle at 82% 82%, rgba(45,106,79,0.12), transparent 52%);
+  }
 
-    .card{
-      width:min(780px, 95vw);
-      border-radius: 28px;
-      overflow:hidden;
-      box-shadow: 0 18px 70px var(--shadow);
-      border: 1px solid var(--stroke);
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      position:relative;
-      z-index:2;
-    }
+  /* Floating sunflower drift */
+  .drift{
+    position:fixed;
+    top:-40px;
+    left:0;
+    z-index:1;
+    pointer-events:none;
+    opacity:.86;
+    filter: drop-shadow(0 12px 14px rgba(0,0,0,0.16));
+    transition: transform 4.4s linear, opacity 4.4s linear;
+  }
 
-    .top{
-      display:grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 18px;
-      padding: 18px;
-    }
-    @media (max-width: 760px){
-      .top{ grid-template-columns: 1fr; }
-    }
+  .card{
+    width:min(820px, 95vw);
+    margin: 0 auto;
+    border-radius: 28px;
+    overflow:hidden;
+    box-shadow: 0 18px 70px var(--shadow);
+    border: 1px solid var(--stroke);
+    background: var(--card);
+    backdrop-filter: blur(10px);
+    position:relative;
+    z-index:2;
+  }
 
-    .photoWrap{
-      position:relative;
-      border-radius: 22px;
-      overflow:hidden;
-      border: 1px solid rgba(255,255,255,0.72);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
-      min-height: 360px;
-      background: #fff;
-    }
-    .photoWrap img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-      transform: scale(1.02);
-    }
-    .photoGlow{
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 10%, rgba(255,255,255,0.18), transparent 60%),
-        radial-gradient(circle at 90% 70%, rgba(255,213,74,0.20), transparent 60%);
-      pointer-events:none;
-    }
+  .top{
+    display:grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 18px;
+    padding: 18px;
+  }
+  @media (max-width: 760px){
+    .top{ grid-template-columns: 1fr; }
+  }
 
-    .content{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap: 10px;
-      padding: 10px 6px;
-    }
+  .photoWrap{
+    position:relative;
+    border-radius: 22px;
+    overflow:hidden;
+    border: 1px solid rgba(255,255,255,0.72);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+    min-height: 360px;
+    background: #fff;
+  }
+  .photoWrap img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    display:block;
+    transform: scale(1.02);
+  }
+  .photoGlow{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,0.18), transparent 60%),
+      radial-gradient(circle at 90% 70%, rgba(255,213,74,0.20), transparent 60%);
+    pointer-events:none;
+  }
 
-    .badge{
-      width:fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,213,74,0.28);
-      border: 1px solid rgba(255,183,3,0.35);
-      font-weight: 900;
-      letter-spacing: 0.2px;
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
+  .content{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap: 10px;
+    padding: 10px 6px;
+  }
 
-    h1{
-      margin: 0;
-      font-size: clamp(24px, 3.4vw, 40px);
-      line-height: 1.1;
-    }
+  .badge{
+    width:fit-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,213,74,0.28);
+    border: 1px solid rgba(255,183,3,0.35);
+    font-weight: 950;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
 
-    .sub{
-      margin: 0;
-      opacity: 0.88;
-      font-size: 16px;
-    }
+  h1{
+    margin: 0;
+    font-size: clamp(24px, 3.4vw, 40px);
+    line-height: 1.1;
+  }
+  .sub{
+    margin: 0;
+    opacity: 0.88;
+    font-size: 16px;
+  }
 
-    .stage{
-      margin-top: 10px;
-      position:relative;
-      height: 240px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.35));
-      border: 1px dashed rgba(255,183,3,0.55);
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: 16px;
-    }
+  .stage{
+    margin-top: 10px;
+    position:relative;
+    height: 240px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,255,255,0.35));
+    border: 1px dashed rgba(255,183,3,0.55);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 16px;
+  }
 
-    .btn{
-      border: none;
-      padding: 14px 22px;
-      border-radius: 16px;
-      font-weight: 950;
-      font-size: 18px;
-      cursor: pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,.16);
-      user-select: none;
-      transition: transform .10s ease, filter .2s ease;
-      transform-origin: center;
-    }
-    .btn:hover{ filter: brightness(1.03); }
-    .btn:active{ transform: scale(0.98); }
+  .btn{
+    border: none;
+    padding: 14px 22px;
+    border-radius: 16px;
+    font-weight: 950;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.16);
+    user-select: none;
+    transition: transform .12s ease, filter .2s ease;
+    transform-origin: center;
+    will-change: transform;
+  }
+  .btn:hover{ filter: brightness(1.03); }
+  .btn:active{ transform: scale(0.98); }
 
-    .yes{
-      background: linear-gradient(180deg, var(--yes1), var(--yes2));
-      color: white;
-    }
-    .no{
-      background: linear-gradient(180deg, var(--no1), var(--no2));
-      color: white;
-      position:absolute;
-      left: 68%;
-      top: 58%;
-      transform: translate(-50%, -50%);
-    }
+  .yes{
+    background: linear-gradient(180deg, var(--yes1), var(--yes2));
+    color: white;
+  }
+  .no{
+    background: linear-gradient(180deg, var(--no1), var(--no2));
+    color: white;
+    position:absolute;
+    left: 68%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+  }
 
-    .footer{
-      padding: 0 18px 18px;
-    }
-    .msg{
-      min-height: 32px;
-      margin: 8px 0 0;
-      font-size: 16px;
-      font-weight: 900;
-      opacity: 0.92;
-    }
-    .tiny{
-      margin: 8px 0 0;
-      opacity: 0.7;
-      font-size: 13px;
-    }
+  .footer{ padding: 0 18px 18px; }
+  .msg{
+    min-height: 32px;
+    margin: 8px 0 0;
+    font-size: 16px;
+    font-weight: 900;
+    opacity: 0.92;
+  }
 
-    /* FULLSCREEN CELEBRATION OVERLAY */
-    .celebrateOverlay{
-      position:fixed;
-      inset:0;
-      display:none;
-      place-items:center;
-      background: rgba(10, 12, 18, 0.62);
-      backdrop-filter: blur(4px);
-      z-index: 50;
-      overflow:hidden;
-    }
+  /* Fireworks canvas */
+  #fxCanvas{
+    position:fixed;
+    inset:0;
+    z-index: 40;
+    pointer-events:none;
+    display:none;
+  }
 
-    .cinematicText{
-      color: rgba(255,255,255,0.95);
-      font-weight: 900;
-      letter-spacing: 0.4px;
-      font-size: clamp(20px, 3vw, 34px);
-      text-align:center;
-      text-shadow: 0 14px 40px rgba(0,0,0,0.55);
-      padding: 0 18px;
-      transform: translateY(10px);
-      opacity: 0;
-      transition: opacity .6s ease, transform .6s ease;
-      z-index: 60;
-    }
-    .celebrateOverlay.show .cinematicText{
-      opacity: 1;
-      transform: translateY(0px);
-    }
+  /* Cinematic overlay + transition */
+  .overlay{
+    position:fixed;
+    inset:0;
+    z-index: 45;
+    display:none;
+    place-items:center;
+    background: rgba(10, 12, 18, 0.50);
+    backdrop-filter: blur(4px);
+  }
+  .overlayText{
+    color: rgba(255,255,255,0.96);
+    font-weight: 950;
+    letter-spacing: 0.4px;
+    font-size: clamp(20px, 3vw, 34px);
+    text-align:center;
+    text-shadow: 0 16px 60px rgba(0,0,0,0.55);
+    padding: 0 18px;
+    opacity:0;
+    transform: translateY(10px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+  .overlay.show .overlayText{
+    opacity:1;
+    transform: translateY(0);
+  }
 
-    /* Firework particles */
-    .spark{
-      position:fixed;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      opacity: 0.95;
-      z-index: 55;
-      pointer-events:none;
-      box-shadow: 0 0 18px rgba(255,255,255,0.35);
-    }
-
-    /* Cinematic transition to next page */
-    .pageFade{
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background: radial-gradient(circle at center, rgba(0,0,0,0.0), rgba(0,0,0,0.95));
-      opacity:0;
-      transform: scale(1.02);
-      transition: opacity 1.05s ease, transform 1.05s ease;
-      z-index: 80;
-    }
-    .pageFade.on{
-      opacity:1;
-      transform: scale(1.0);
-    }
-  </style>
+  .fade{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index: 60;
+    opacity:0;
+    transform: scale(1.02);
+    background: radial-gradient(circle at center, rgba(0,0,0,0.05), rgba(0,0,0,0.92));
+    transition: opacity 1.15s ease, transform 1.15s ease;
+  }
+  .fade.on{
+    opacity:1;
+    transform: scale(1.0);
+  }
+</style>
 </head>
 <body>
   <div class="sun-bg" aria-hidden="true"></div>
@@ -279,175 +265,207 @@
 
     <div class="footer">
       <div class="msg" id="msg"></div>
-      <div class="tiny">On phone: tap “No” — it will dodge instantly 😄</div>
     </div>
   </main>
 
-  <!-- Celebration overlay + cinematic fade -->
-  <div class="celebrateOverlay" id="celebrateOverlay" aria-hidden="true">
-    <div class="cinematicText" id="cinematicText">YAY RAIDAH!! 🌻💖</div>
+  <canvas id="fxCanvas"></canvas>
+
+  <div class="overlay" id="overlay" aria-hidden="true">
+    <div class="overlayText" id="overlayText">YAY RAIDAH!! 🌻💖</div>
   </div>
-  <div class="pageFade" id="pageFade" aria-hidden="true"></div>
 
-  <script>
-    const stage = document.getElementById("stage");
-    const noBtn  = document.getElementById("noBtn");
-    const yesBtn = document.getElementById("yesBtn");
-    const msg    = document.getElementById("msg");
+  <div class="fade" id="fade" aria-hidden="true"></div>
 
-    const celebrateOverlay = document.getElementById("celebrateOverlay");
-    const cinematicText = document.getElementById("cinematicText");
-    const pageFade = document.getElementById("pageFade");
+<script>
+  const stage = document.getElementById("stage");
+  const noBtn  = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const msg    = document.getElementById("msg");
 
-    // Progressive scaling
-    let escapes = 0;
-    let yesScale = 1;
-    let noScale  = 1;
+  const overlay = document.getElementById("overlay");
+  const overlayText = document.getElementById("overlayText");
+  const fade = document.getElementById("fade");
 
-    const YES_MAX = 1.9;
-    const NO_MIN  = 0.34;
+  const canvas = document.getElementById("fxCanvas");
+  const ctx = canvas.getContext("2d");
 
-    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+  // Progressive scaling
+  let escapes = 0;
+  let yesScale = 1;
+  let noScale  = 1;
+  const YES_MAX = 1.95;
+  const NO_MIN  = 0.32;
 
-    function applyScales(){
-      yesBtn.style.transform = `scale(${yesScale})`;
-      noBtn.style.transform  = `translate(-50%, -50%) scale(${noScale})`;
-    }
+  function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
 
-    function moveNo(){
-      const stageRect = stage.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
+  function applyScales(){
+    yesBtn.style.transform = `scale(${yesScale})`;
+    noBtn.style.transform  = `translate(-50%, -50%) scale(${noScale})`;
+  }
 
-      const padding = 14;
-      const maxX = stageRect.width  - btnRect.width  - padding;
-      const maxY = stageRect.height - btnRect.height - padding;
+  function moveNo(){
+    const stageRect = stage.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
 
-      let x = Math.random() * maxX + padding;
-      let y = Math.random() * maxY + padding;
+    const padding = 14;
+    const maxX = stageRect.width  - btnRect.width  - padding;
+    const maxY = stageRect.height - btnRect.height - padding;
 
-      x = clamp(x, padding, stageRect.width  - btnRect.width  - padding);
-      y = clamp(y, padding, stageRect.height - btnRect.height - padding);
+    let x = Math.random() * maxX + padding;
+    let y = Math.random() * maxY + padding;
 
-      noBtn.style.left = `${x + btnRect.width/2}px`;
-      noBtn.style.top  = `${y + btnRect.height/2}px`;
-    }
+    x = clamp(x, padding, stageRect.width  - btnRect.width  - padding);
+    y = clamp(y, padding, stageRect.height - btnRect.height - padding);
 
-    function spawnPetals(){
-      // subtle ambient sunflower petals drifting
-      const petals = ["🌻","✨","🌼"];
-      const s = document.createElement("span");
-      s.className = "petal";
-      s.textContent = petals[Math.floor(Math.random()*petals.length)];
-      s.style.left = (Math.random()*100) + "vw";
-      s.style.fontSize = (14 + Math.random()*22) + "px";
-      document.body.appendChild(s);
+    noBtn.style.left = `${x + btnRect.width/2}px`;
+    noBtn.style.top  = `${y + btnRect.height/2}px`;
+  }
 
-      const driftX = (Math.random()*30 - 15);
-      const fallY = 120;
-
-      requestAnimationFrame(()=>{
-        s.style.transform = `translate(${driftX}vw, ${fallY}vh) rotate(${Math.random()*360}deg)`;
-        s.style.opacity = "0";
-      });
-
-      setTimeout(()=> s.remove(), 3800);
-    }
-
-    // Fireworks burst
-    function fireworksBurst(durationMs = 1200){
-      const start = performance.now();
-
-      function burstOnce(){
-        // random center points for fireworks
-        const cx = Math.random() * window.innerWidth;
-        const cy = Math.random() * (window.innerHeight * 0.55) + 40;
-
-        const colors = ["#ffd54a","#ffb703","#ffffff","#34d399","#fb7185","#a78bfa"];
-        const count = 34;
-
-        for(let i=0;i<count;i++){
-          const p = document.createElement("div");
-          p.className = "spark";
-          const color = colors[Math.floor(Math.random()*colors.length)];
-          p.style.background = color;
-
-          const size = 5 + Math.random()*6;
-          p.style.width = size + "px";
-          p.style.height = size + "px";
-
-          p.style.left = cx + "px";
-          p.style.top  = cy + "px";
-
-          document.body.appendChild(p);
-
-          const angle = Math.random() * Math.PI * 2;
-          const radius = 90 + Math.random()*160;
-          const dx = Math.cos(angle) * radius;
-          const dy = Math.sin(angle) * radius;
-
-          p.animate([
-            { transform: "translate(0,0) scale(1)", opacity: 1 },
-            { transform: `translate(${dx}px, ${dy}px) scale(0.7)`, opacity: 0 }
-          ], {
-            duration: 850 + Math.random()*350,
-            easing: "cubic-bezier(.2,.9,.2,1)"
-          });
-
-          setTimeout(()=> p.remove(), 1400);
-        }
-      }
-
-      function loop(now){
-        if (now - start < durationMs){
-          burstOnce();
-          setTimeout(()=> requestAnimationFrame(loop), 140);
-        }
-      }
-      requestAnimationFrame(loop);
-    }
-
-    function onNoAttempt(){
-      escapes++;
-      yesScale = clamp(1 + escapes * 0.085, 1, YES_MAX);
-      noScale  = clamp(1 - escapes * 0.07, NO_MIN, 1);
-
-      applyScales();
-      moveNo();
-
-      if (escapes <= 3) msg.textContent = "No is running… 🌻😼";
-      else if (escapes <= 7) msg.textContent = "No is shrinking… 😂";
-      else msg.textContent = "Be honest… you want to press YES 😭💛";
-    }
-
-    // Desktop hover + Mobile touch
-    noBtn.addEventListener("mouseenter", onNoAttempt);
-    noBtn.addEventListener("mouseover", onNoAttempt);
-    noBtn.addEventListener("touchstart", (e)=>{
-      e.preventDefault();
-      onNoAttempt();
-    }, { passive:false });
-
-    // YES cinematic: fireworks -> fade -> navigate
-    yesBtn.addEventListener("click", ()=>{
-      yesBtn.disabled = true;
-      noBtn.disabled = true;
-      msg.textContent = "🌻 Celebrating…";
-
-      celebrateOverlay.style.display = "grid";
-      requestAnimationFrame(()=> celebrateOverlay.classList.add("show"));
-
-      cinematicText.textContent = "YAY RAIDAH!! 🌻💖";
-      fireworksBurst(1400);
-
-      // cinematic fade to next page
-      setTimeout(()=> pageFade.classList.add("on"), 950);
-      setTimeout(()=> window.location.href = "yes.html", 1650);
-    });
-
-    // Initialize + ambience
+  function onNoAttempt(){
+    escapes++;
+    yesScale = clamp(1 + escapes * 0.085, 1, YES_MAX);
+    noScale  = clamp(1 - escapes * 0.07, NO_MIN, 1);
     applyScales();
     moveNo();
-    setInterval(spawnPetals, 650);
-  </script>
+
+    if (escapes <= 3) msg.textContent = "No is running… 🌻😼";
+    else if (escapes <= 7) msg.textContent = "No is shrinking… 😂";
+    else msg.textContent = "Be honest… you want to press YES 😭💛";
+  }
+
+  // Desktop hover + Mobile touch
+  noBtn.addEventListener("mouseenter", onNoAttempt);
+  noBtn.addEventListener("mouseover", onNoAttempt);
+  noBtn.addEventListener("touchstart", (e)=>{
+    e.preventDefault();
+    onNoAttempt();
+  }, { passive:false });
+
+  // Ambient drifting sunflower/petals
+  function spawnDrift(){
+    const choices = ["🌻","🌼","✨"];
+    const el = document.createElement("span");
+    el.className = "drift";
+    el.textContent = choices[Math.floor(Math.random()*choices.length)];
+    el.style.left = (Math.random()*100) + "vw";
+    el.style.fontSize = (16 + Math.random()*26) + "px";
+    document.body.appendChild(el);
+
+    const driftX = (Math.random()*34 - 17);
+    const fallY = 125;
+
+    requestAnimationFrame(()=>{
+      el.style.transform = `translate(${driftX}vw, ${fallY}vh) rotate(${Math.random()*360}deg)`;
+      el.style.opacity = "0";
+    });
+
+    setTimeout(()=> el.remove(), 4400);
+  }
+  setInterval(spawnDrift, 650);
+
+  // Fireworks (particles)
+  let particles = [];
+  let animId = null;
+
+  function resizeCanvas(){
+    canvas.width = window.innerWidth * devicePixelRatio;
+    canvas.height = window.innerHeight * devicePixelRatio;
+    canvas.style.width = window.innerWidth + "px";
+    canvas.style.height = window.innerHeight + "px";
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  window.addEventListener("resize", resizeCanvas);
+
+  function addBurst(x, y){
+    const colors = ["#ffd54a","#ffb703","#ffffff","#34d399","#fb7185","#a78bfa"];
+    const count = 60;
+    for(let i=0;i<count;i++){
+      const a = Math.random() * Math.PI * 2;
+      const sp = 2.5 + Math.random()*5.2;
+      particles.push({
+        x, y,
+        vx: Math.cos(a)*sp,
+        vy: Math.sin(a)*sp,
+        g: 0.06 + Math.random()*0.06,
+        life: 40 + Math.random()*30,
+        r: 2 + Math.random()*2.8,
+        c: colors[Math.floor(Math.random()*colors.length)]
+      });
+    }
+  }
+
+  function tick(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    // soft glow pass
+    ctx.globalCompositeOperation = "lighter";
+
+    for(let i=particles.length-1;i>=0;i--){
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += p.g;
+      p.vx *= 0.985;
+      p.vy *= 0.985;
+      p.life -= 1;
+
+      ctx.beginPath();
+      ctx.fillStyle = p.c;
+      ctx.globalAlpha = Math.max(0, Math.min(1, p.life/55));
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+      ctx.fill();
+
+      if (p.life <= 0 || p.y > window.innerHeight + 80) particles.splice(i,1);
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = "source-over";
+
+    if (particles.length > 0){
+      animId = requestAnimationFrame(tick);
+    } else {
+      cancelAnimationFrame(animId);
+      animId = null;
+      canvas.style.display = "none";
+    }
+  }
+
+  function fireworksShow(durationMs=1400){
+    resizeCanvas();
+    canvas.style.display = "block";
+    const start = performance.now();
+
+    function loop(now){
+      if (now - start < durationMs){
+        const x = Math.random()*window.innerWidth;
+        const y = 60 + Math.random()*(window.innerHeight*0.45);
+        addBurst(x, y);
+        setTimeout(()=>requestAnimationFrame(loop), 140);
+      }
+      if (!animId) tick();
+    }
+    requestAnimationFrame(loop);
+  }
+
+  // YES cinematic flow
+  yesBtn.addEventListener("click", ()=>{
+    yesBtn.disabled = true;
+    noBtn.disabled = true;
+
+    overlay.style.display = "grid";
+    requestAnimationFrame(()=> overlay.classList.add("show"));
+
+    overlayText.textContent = "YAY RAIDAH!! 🌻💖";
+    fireworksShow(1550);
+
+    // cinematic fade to next page
+    setTimeout(()=> fade.classList.add("on"), 980);
+    setTimeout(()=> window.location.href = "yes.html", 1700);
+  });
+
+  // Initialize
+  applyScales();
+  moveNo();
+</script>
 </body>
 </html>

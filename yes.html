@@ -1,223 +1,224 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forever Yours 🌻💖</title>
-  <style>
-    :root{
-      --sun1:#ffd54a;
-      --sun2:#ffb703;
-      --leaf:#2d6a4f;
-      --bg1:#fff2b2;
-      --bg2:#f8c65d;
-      --card: rgba(255,255,255,0.84);
-      --stroke: rgba(255,255,255,0.6);
-      --shadow: rgba(0,0,0,0.20);
-    }
-    *{ box-sizing:border-box; }
-    html, body { height:100%; }
-    body{
-      margin:0;
-      min-height:100vh;
-      display:grid;
-      place-items:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:#1f2937;
-      background: radial-gradient(circle at top, var(--bg1), var(--bg2));
-      padding: 18px;
-      overflow:hidden;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Forever 🌻</title>
+<style>
+  :root{
+    --sun1:#ffd54a;
+    --sun2:#ffb703;
+    --leaf:#2d6a4f;
+    --ink:#1f2937;
+    --bg1:#fff2b2;
+    --bg2:#f8c65d;
+    --card: rgba(255,255,255,0.86);
+    --stroke: rgba(255,255,255,0.65);
+    --shadow: rgba(0,0,0,0.18);
+  }
 
-    .sun-bg{
-      position:fixed;
-      inset:-20px;
-      background:
-        radial-gradient(circle at 10% 15%, rgba(255,213,74,0.30), transparent 40%),
-        radial-gradient(circle at 90% 20%, rgba(255,183,3,0.25), transparent 42%),
-        radial-gradient(circle at 20% 90%, rgba(255,213,74,0.22), transparent 42%),
-        radial-gradient(circle at 85% 80%, rgba(45,106,79,0.12), transparent 45%);
-      pointer-events:none;
-      z-index:0;
-    }
+  *{ box-sizing:border-box; }
+  html, body{ height:auto; }
 
-    .wrap{
-      width:min(860px, 95vw);
-      display:grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 18px;
-      background: var(--card);
-      border: 1px solid var(--stroke);
-      border-radius: 28px;
-      overflow:hidden;
-      box-shadow: 0 18px 70px var(--shadow);
-      backdrop-filter: blur(10px);
-      position:relative;
-      z-index:2;
-    }
-    @media (max-width: 820px){
-      .wrap{ grid-template-columns: 1fr; }
-    }
+  body{
+    margin:0;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: radial-gradient(circle at top, var(--bg1), var(--bg2));
+    overflow-x:hidden;
+    overflow-y:auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 18px;
+  }
 
-    .photo{
-      position:relative;
-      min-height: 440px;
-      background:#fff;
-    }
-    .photo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-    .glow{
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.22), transparent 60%),
-        radial-gradient(circle at 85% 70%, rgba(255,213,74,0.22), transparent 60%);
-      pointer-events:none;
-    }
+  .sun-bg{
+    position:fixed;
+    inset:-30px;
+    pointer-events:none;
+    z-index:0;
+    background:
+      radial-gradient(circle at 10% 15%, rgba(255,213,74,0.32), transparent 45%),
+      radial-gradient(circle at 90% 20%, rgba(255,183,3,0.25), transparent 46%),
+      radial-gradient(circle at 20% 90%, rgba(255,213,74,0.20), transparent 48%),
+      radial-gradient(circle at 85% 80%, rgba(45,106,79,0.12), transparent 52%);
+  }
 
-    .content{
-      padding: 18px 18px 20px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap: 12px;
-    }
+  .wrap{
+    width:min(900px, 95vw);
+    margin: 0 auto;
+    display:grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 18px;
+    background: var(--card);
+    border: 1px solid var(--stroke);
+    border-radius: 28px;
+    overflow:hidden;
+    box-shadow: 0 18px 70px var(--shadow);
+    backdrop-filter: blur(10px);
+    position:relative;
+    z-index:2;
+  }
+  @media (max-width: 820px){
+    .wrap{ grid-template-columns: 1fr; }
+  }
 
-    .tag{
-      width:fit-content;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,213,74,0.28);
-      border: 1px solid rgba(255,183,3,0.35);
-      font-weight: 950;
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
+  .photo{
+    position:relative;
+    min-height: 440px;
+    background:#fff;
+  }
+  .photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+    transform: scale(1.01);
+  }
+  .glow{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,0.22), transparent 60%),
+      radial-gradient(circle at 85% 70%, rgba(255,213,74,0.22), transparent 60%);
+    pointer-events:none;
+  }
 
-    h1{
-      margin: 0;
-      font-size: clamp(26px, 3.4vw, 44px);
-      line-height: 1.08;
-    }
+  .content{
+    padding: 18px 18px 20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap: 12px;
+  }
 
-    .note{
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.65;
-      opacity: 0.95;
-      font-weight: 700;
-    }
+  .tag{
+    width:fit-content;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,213,74,0.28);
+    border: 1px solid rgba(255,183,3,0.35);
+    font-weight: 950;
+    display:flex;
+    gap:8px;
+    align-items:center;
+  }
 
-    .plan{
-      margin-top: 6px;
-      padding: 14px;
-      border-radius: 20px;
-      background: rgba(255,255,255,0.68);
-      border: 1px dashed rgba(255,183,3,0.60);
-    }
-    .plan h2{
-      margin:0 0 8px;
-      font-size: 18px;
-    }
-    .row{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin: 8px 0 0;
-    }
-    .pill{
-      padding: 10px 12px;
-      border-radius: 999px;
-      background: rgba(45,106,79,0.10);
-      border: 1px solid rgba(45,106,79,0.12);
-      font-weight: 800;
-      font-size: 14px;
-    }
+  h1{
+    margin:0;
+    font-size: clamp(26px, 3.4vw, 44px);
+    line-height: 1.08;
+  }
 
-    .actions{
-      display:flex;
-      gap: 10px;
-      flex-wrap:wrap;
-      margin-top: 8px;
-    }
-    .btn{
-      border:none;
-      padding: 12px 16px;
-      border-radius: 14px;
-      font-weight: 950;
-      cursor:pointer;
-      box-shadow: 0 10px 25px rgba(0,0,0,.14);
-    }
-    .btn.primary{
-      color:#1f2937;
-      background: linear-gradient(180deg, var(--sun1), var(--sun2));
-    }
-    .btn.ghost{
-      background: rgba(31,41,55,0.10);
-    }
+  .note{
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.65;
+    opacity: 0.96;
+    font-weight: 720;
+  }
 
-    .mini{
-      margin: 0;
-      opacity: 0.75;
-      font-size: 13px;
-    }
+  .plan{
+    margin-top: 6px;
+    padding: 14px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.68);
+    border: 1px dashed rgba(255,183,3,0.60);
+  }
+  .plan h2{
+    margin:0 0 8px;
+    font-size: 18px;
+  }
+  .row{
+    display:flex;
+    gap: 10px;
+    flex-wrap:wrap;
+    margin: 8px 0 0;
+  }
+  .pill{
+    padding: 10px 12px;
+    border-radius: 999px;
+    background: rgba(45,106,79,0.10);
+    border: 1px solid rgba(45,106,79,0.12);
+    font-weight: 850;
+    font-size: 14px;
+  }
 
-    /* Sunflower bloom */
-    .bloom{
-      position:fixed;
-      inset:0;
-      display:none;
-      z-index:50;
-      pointer-events:none;
-      overflow:hidden;
-    }
+  .actions{
+    display:flex;
+    gap: 10px;
+    flex-wrap:wrap;
+    margin-top: 8px;
+  }
+  .btn{
+    border:none;
+    padding: 12px 16px;
+    border-radius: 14px;
+    font-weight: 950;
+    cursor:pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,.14);
+  }
+  .btn.primary{
+    color:#1f2937;
+    background: linear-gradient(180deg, var(--sun1), var(--sun2));
+  }
+  .btn.ghost{
+    background: rgba(31,41,55,0.10);
+  }
 
-    .bloomFlash{
-      position:absolute;
-      inset:0;
-      background: radial-gradient(circle at center, rgba(255,213,74,0.55), rgba(0,0,0,0.0) 55%);
-      opacity:0;
-      transform: scale(0.85);
-      transition: opacity .9s ease, transform .9s ease;
-    }
-    .bloom.on .bloomFlash{
-      opacity: 1;
-      transform: scale(1.1);
-    }
+  .mini{
+    margin: 0;
+    opacity: 0.75;
+    font-size: 13px;
+  }
 
-    .sun{
-      position:absolute;
-      left:0; top:0;
-      font-size: 28px;
-      opacity: 0;
-      transform: translate(-50%, -50%) scale(0.2);
-      filter: drop-shadow(0 14px 16px rgba(0,0,0,0.20));
-      animation: bloomUp 1.35s ease forwards;
-    }
+  /* Ambient drift */
+  .drift{
+    position:fixed;
+    top:-40px;
+    left:0;
+    z-index:1;
+    pointer-events:none;
+    opacity:.86;
+    filter: drop-shadow(0 12px 14px rgba(0,0,0,0.16));
+    transition: transform 4.4s linear, opacity 4.4s linear;
+  }
 
-    @keyframes bloomUp{
-      0%   { opacity:0; transform: translate(-50%, -50%) scale(0.2) rotate(0deg); }
-      35%  { opacity:1; transform: translate(-50%, -50%) scale(1.15) rotate(14deg); }
-      100% { opacity:0; transform: translate(-50%, -50%) scale(1.0) rotate(30deg); }
-    }
+  /* Sunflower bloom layer */
+  .bloomLayer{
+    position:fixed;
+    inset:0;
+    display:none;
+    z-index:50;
+    pointer-events:none;
+    overflow:hidden;
+  }
+  .bloomFlash{
+    position:absolute;
+    inset:0;
+    background: radial-gradient(circle at center, rgba(255,213,74,0.62), rgba(0,0,0,0.0) 56%);
+    opacity:0;
+    transform: scale(0.85);
+    transition: opacity .95s ease, transform .95s ease;
+  }
+  .bloomLayer.on .bloomFlash{
+    opacity:1;
+    transform: scale(1.12);
+  }
 
-    /* gentle ambient sunflowers drifting */
-    .floatSun{
-      position:fixed;
-      top:-40px;
-      left:0;
-      z-index:1;
-      pointer-events:none;
-      opacity:0.85;
-      filter: drop-shadow(0 12px 14px rgba(0,0,0,0.16));
-      transition: transform 4.2s linear, opacity 4.2s linear;
-    }
-  </style>
+  .sun{
+    position:absolute;
+    left:0; top:0;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.2);
+    filter: drop-shadow(0 14px 16px rgba(0,0,0,0.20));
+    animation: bloomUp 1.45s ease forwards;
+  }
+  @keyframes bloomUp{
+    0%   { opacity:0; transform: translate(-50%, -50%) scale(0.18) rotate(0deg); }
+    30%  { opacity:1; transform: translate(-50%, -50%) scale(1.18) rotate(12deg); }
+    100% { opacity:0; transform: translate(-50%, -50%) scale(1.0) rotate(28deg); }
+  }
+</style>
 </head>
 <body>
   <div class="sun-bg" aria-hidden="true"></div>
@@ -264,70 +265,68 @@
     </div>
   </main>
 
-  <!-- bloom layer -->
-  <div class="bloom" id="bloom" aria-hidden="true">
+  <div class="bloomLayer" id="bloomLayer" aria-hidden="true">
     <div class="bloomFlash" aria-hidden="true"></div>
   </div>
 
-  <script>
-    const bloom = document.getElementById("bloom");
-    const celebrateBtn = document.getElementById("celebrateBtn");
+<script>
+  const bloomLayer = document.getElementById("bloomLayer");
+  const celebrateBtn = document.getElementById("celebrateBtn");
 
-    function spawnAmbientSun(){
-      const s = document.createElement("span");
-      s.className = "floatSun";
-      s.textContent = Math.random() < 0.75 ? "🌻" : "✨";
-      s.style.left = (Math.random()*100) + "vw";
-      s.style.fontSize = (16 + Math.random()*24) + "px";
-      document.body.appendChild(s);
+  // ambient drift
+  function spawnDrift(){
+    const choices = ["🌻","🌼","✨"];
+    const el = document.createElement("span");
+    el.className = "drift";
+    el.textContent = choices[Math.floor(Math.random()*choices.length)];
+    el.style.left = (Math.random()*100) + "vw";
+    el.style.fontSize = (16 + Math.random()*26) + "px";
+    document.body.appendChild(el);
 
-      const driftX = (Math.random()*34 - 17);
-      const fallY = 125;
+    const driftX = (Math.random()*34 - 17);
+    const fallY = 125;
 
-      requestAnimationFrame(()=>{
-        s.style.transform = `translate(${driftX}vw, ${fallY}vh) rotate(${Math.random()*360}deg)`;
-        s.style.opacity = "0";
-      });
+    requestAnimationFrame(()=>{
+      el.style.transform = `translate(${driftX}vw, ${fallY}vh) rotate(${Math.random()*360}deg)`;
+      el.style.opacity = "0";
+    });
 
-      setTimeout(()=> s.remove(), 4200);
+    setTimeout(()=> el.remove(), 4400);
+  }
+  setInterval(spawnDrift, 650);
+
+  function sunflowerBloom(){
+    bloomLayer.style.display = "block";
+    bloomLayer.classList.add("on");
+
+    const count = 58;
+    for(let i=0;i<count;i++){
+      const s = document.createElement("div");
+      s.className = "sun";
+      s.textContent = (Math.random() < 0.88) ? "🌻" : "✨";
+
+      const x = Math.random()*window.innerWidth;
+      const y = Math.random()*window.innerHeight;
+
+      s.style.left = x + "px";
+      s.style.top  = y + "px";
+      s.style.fontSize = (22 + Math.random()*52) + "px";
+      s.style.animationDelay = (Math.random()*0.25) + "s";
+
+      bloomLayer.appendChild(s);
+      setTimeout(()=> s.remove(), 1700);
     }
 
-    function sunflowerBloom(){
-      bloom.style.display = "block";
-      bloom.classList.add("on");
+    setTimeout(()=>{
+      bloomLayer.classList.remove("on");
+      bloomLayer.style.display = "none";
+    }, 1750);
+  }
 
-      // create many sunflower blooms across screen
-      const count = 46;
-      for(let i=0;i<count;i++){
-        const s = document.createElement("div");
-        s.className = "sun";
-        s.textContent = (Math.random() < 0.85) ? "🌻" : "✨";
+  celebrateBtn.addEventListener("click", sunflowerBloom);
 
-        const x = Math.random()*window.innerWidth;
-        const y = Math.random()*window.innerHeight;
-
-        s.style.left = x + "px";
-        s.style.top  = y + "px";
-        s.style.fontSize = (22 + Math.random()*44) + "px";
-        s.style.animationDelay = (Math.random()*0.25) + "s";
-
-        bloom.appendChild(s);
-        setTimeout(()=> s.remove(), 1700);
-      }
-
-      // remove bloom layer after
-      setTimeout(()=>{
-        bloom.classList.remove("on");
-        bloom.style.display = "none";
-      }, 1700);
-    }
-
-    celebrateBtn.addEventListener("click", sunflowerBloom);
-
-    // ambient drift
-    setInterval(spawnAmbientSun, 700);
-    // small bloom on load
-    setTimeout(sunflowerBloom, 300);
-  </script>
+  // small bloom on load
+  setTimeout(sunflowerBloom, 300);
+</script>
 </body>
 </html>
